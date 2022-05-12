@@ -52,7 +52,7 @@
                     <div class="space-y-5 flex-shrink-0 lg:w-7/12">
 
                         <!-- post 1-->
-                        @foreach ($posts as $post)
+                        @foreach (Auth::user()->postingku() as $post)
                         <div class="bg-white shadow rounded-md dark:bg-gray-900 -mx-2 lg:mx-0">
                             <!-- post header-->
                             <div class="flex justify-between items-center px-4 py-3">

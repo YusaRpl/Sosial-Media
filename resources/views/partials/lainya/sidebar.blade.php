@@ -20,26 +20,27 @@
             </div>
             <a href="profile" class="text-xl font-medium capitalize mt-4 uk-link-reset"> {{auth()->user()->name}}
             </a>
-            <div class="flex justify-around w-full items-center text-center uk-link-reset text-gray-800 mt-6">
+               <div class="flex justify-around w-full items-center text-center uk-link-reset text-gray-800 mt-6">
                 <div>
                     <a href="#">
                         <strong>Post</strong>
-                        <div> 130</div>
+                        <div>{{Auth::user()->postingku()->count()}}</div>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="#Following" uk-toggle>
                         <strong>Following</strong>
-                        <div> 1,230</div>
+                        <div>{{Auth::user()->follows()->count()}}</div>
                     </a>
                 </div>
                 <div>
-                    <a href="#">
+                    <a href="#Followers" uk-toggle>
                         <strong>Followers</strong>
-                        <div> 2,430</div>
+                        <div>{{Auth::user()->followers()->count()}}</div>
                     </a>
                 </div>
-            </div>
+            </div>  
+           
         </div>
         <hr class="-mx-4 -mt-1 uk-visible@s">
         <ul>

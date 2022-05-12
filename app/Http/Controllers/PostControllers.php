@@ -12,6 +12,7 @@ class PostControllers extends Controller
             "title" => "trending",
             "users" => User::latest()->get(),
             'posts' => posting::where('user_id', auth()->user()->id)->get()
+            
         ]);
     }
     public function trending(){

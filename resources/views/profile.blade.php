@@ -31,9 +31,15 @@
                                 <a href="#">Travailing</a> , <a href="#">Sports</a>  , <a href="#">Movies</a> 
                             </div>
 
-                            
                             <div class="capitalize flex font-semibold space-x-3 text-center text-sm my-2">
-                                <a href="#" class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Add friend</a>
+                                @foreach ($users as $user)
+                                @if ($user->id === Auth::user()->id)
+                                
+                               <a href="#" class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700">Edit Profile</a>
+                               @else
+                               <a href="#" class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Add friend</a> 
+                               @endif
+                               @endforeach
                                 <a href="#" class="bg-pink-500 shadow-sm p-2 pink-500 px-6 rounded-md text-white hover:text-white hover:bg-pink-600"> Send message</a>
                                 <div>
 
@@ -76,17 +82,16 @@
                             </div>
 
                             <div class="divide-gray-300 divide-transparent divide-x grid grid-cols-3 lg:text-left lg:text-lg mt-3 text-center w-full dark:text-gray-100">
-                                <div class="flex lg:flex-row flex-col"> 120k <strong class="lg:pl-2">Posts</strong></div>
-                                <div class="lg:pl-4 flex lg:flex-row flex-col"> 420k <strong class="lg:pl-2">Followers</strong></div>
-                                <div class="lg:pl-4 flex lg:flex-row flex-col"> 530k <strong class="lg:pl-2">Following</strong></div>
+                                <div class="flex lg:flex-row flex-col"> {{Auth::user()->postingku()->count()}} <strong class="lg:pl-2">Posts</strong></div>
+                                <a href="#Followers" uk-toggle>
+                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{Auth::user()->followers()->count()}} <strong class="lg:pl-2">Followers</strong></div>
+                                </a>
+                                <a href="#Following" uk-toggle>
+                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{Auth::user()->follows()->count()}} <strong class="lg:pl-2">Following</strong></div>
+                                </a>
                             </div>
- 
                     </div>
-
-                    <div class="w-20"></div>
-
                 </div>
-              
                 <h1 class="lg:text-2xl text-lg font-extrabold leading-none text-gray-900 tracking-tight mt-8"> Highths </h1>
                 
                 <div class="my-6 grid lg:grid-cols-5 grid-cols-3 gap-2 hover:text-yellow-700 uk-link-reset">

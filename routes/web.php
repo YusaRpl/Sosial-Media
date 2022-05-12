@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowingControllsr;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostControllers;
 use App\Http\Controllers\RegisterControllser;
@@ -20,4 +21,7 @@ Route::post('/form-register', [RegisterControllser::class, 'store']);
 Route::get('/form-login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/form-login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[loginController::class, 'logout']);
+
+Route::get('profile/{user}/following', [FollowingControllsr::class, 'following'])->name('profile.following');
+Route::get('profile/{user}/followers', [FollowingControllsr::class, 'follower'])->name('profile.follower');
 
