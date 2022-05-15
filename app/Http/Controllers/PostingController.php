@@ -30,7 +30,7 @@ class PostingController extends Controller
     public function create()
     {
         return view('posting.create',[
-            'title' => ''
+            'title' => 'create'
         ]);
     }
 
@@ -78,7 +78,7 @@ class PostingController extends Controller
     public function edit(posting $posting)
     {
         return view('posting.edit',[
-            'title' => '',
+            'title' => 'create',
             'post' => $posting
         ]);
     }

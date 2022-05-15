@@ -74,11 +74,34 @@ class User extends Authenticatable
                             ->latest()
                             ->get();
     }
+    public function post_user(User $user)
+    {
+        $idku = $user->id;
+        return $posting = posting::whereIn('user_id', $idku)
+                            ->orWhere('user_id', $this->id)
+                            ->latest()
+                            ->get();
+    }
 
+    public function follow (User $user)
+    {
+        return $this->follows()->save($user);
+    }
 
-    
-    // public function count()
-    // {
-    //     return $this->collect()->follows();
-    // }
+    public function unfollow (User $user)
+    {
+        dd($user);
+        return $this->follows()->detach($user);
+    }
+
+    public function hapus()
+    {
+        dd(auth()->user());
+        return $this->followers()->detach(auth()->user());
+    }
+
+    public function hasFollow(User $user)
+    {
+        return $this->follows()->where('following_user_id', $user->id)->exists();
+    }
 }

@@ -1,10 +1,9 @@
 @extends('layout.main')
             @section('main_content')
-            <div class="container m-auto"  style="margin-top: 50px">
+            <div class="container m-auto">
 
                 <div class="flex justify-between items-baseline lg:mr-8  uk-visible@s">
                     <h1 class="font-extrabold leading-none mb-6 lg:text-2xl text-lg text-gray-900 tracking-tight"> Stories </h1>
-                    <a href="#" class="text-blue-400 hover:text-blue-500"> See all</a>
                 </div>
 
                 <!-- users-->
@@ -22,7 +21,7 @@
                             <li>
                                 <div
                                     class="relative bg-gradient-to-tr from-yellow-600 to-pink-600 p-1 rounded-full transform -rotate-2 hover:rotate-3 transition hover:scale-105 m-1">
-                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                    <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}
                                         class="w-20 h-20 rounded-full border-2 border-white bg-gray-200">
                                     <a href="#"
                                         class=" bg-gray-400 p-2 rounded-full w-8 h-8 flex justify-center items-center text-white border-4 border-white absolute right-2 bottom-0 bg-blue-600">
@@ -35,7 +34,7 @@
                                 <a href="#story-view" uk-toggle>
                                     <div
                                         class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-1 rounded-full transform -rotate-2 hover:rotate-3 transition hover:scale-105 m-1">
-                                        <img src="assets/images/avatars/avatar-1.jpg"
+                                        <img src={{ asset('assets/images/avatars/avatar-1.jpg') }}
                                             class="w-20 h-20 rounded-full border-2 border-white bg-gray-200">
                                     </div>
                                 </a>
@@ -59,7 +58,7 @@
                                 <div class="flex flex-1 items-center space-x-4">
                                     <a href="#">
                                         <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                                            <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                            <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                         </div>
                                     </a>
                                     <span class="block capitalize font-semibold dark:text-gray-100">{{$post->user->name}}</span>
@@ -106,7 +105,7 @@
                             </div>
     
                             <div uk-lightbox>
-                                <a href="assets/images/post/img4.jpg">  
+                                <a href={{ asset('assets/images/post/img4.jpg') }}>  
                                     <img src="{{asset('storage/'. $post->image)}}" class="card-img-top" alt="">
                                 </a>
                             </div>
@@ -140,9 +139,9 @@
                                 </div>
                                 <div class="flex items-center space-x-3"> 
                                     <div class="flex items-center">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                        <img src={{ asset('assets/images/avatars/avatar-4.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                     </div>
                                     <div class="dark:text-gray-100">
                                         Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
@@ -158,7 +157,7 @@
                                 <div class="border-t pt-4 space-y-4 dark:border-gray-600">
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i
@@ -168,7 +167,7 @@
                                     </div>
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i>
@@ -176,7 +175,7 @@
                                             <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                         </div>
                                     </div>
-                                    <a href="">
+                                    <a href=>
                                         <p class="mt-2">
                                             Lihat semua 50 komentar
                                         </p>
@@ -205,7 +204,7 @@
                                 <div class="flex flex-1 items-center space-x-4">
                                     <a href="#">
                                         <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                                            <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                            <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                         </div>
                                     </a>
                                     <span class="block capitalize font-semibold dark:text-gray-100">sadasdasdas </span>
@@ -252,14 +251,14 @@
                             <div uk-lightbox>
                                 <div class="grid grid-cols-2 gap-2 p-2">
 
-                                    <a href="assets/images/post/img9.jpg" class="col-span-2">  
-                                        <img src="assets/images/post/img9.jpg" alt="" class="rounded-md w-full lg:h-76 object-cover">
+                                    <a href={{ asset('assets/images/post/img9.jpg') }} class="col-span-2">  
+                                        <img src={{ asset('assets/images/post/img9.jpg') }} alt="" class="rounded-md w-full lg:h-76 object-cover">
                                     </a>
-                                    <a href="assets/images/post/img10.jpg">  
-                                        <img src="assets/images/post/img10.jpg" alt="" class="rounded-md w-full h-full">
+                                    <a href={{ asset('assets/images/post/img10.jpg') }}>  
+                                        <img src={{ asset('assets/images/post/img10.jpg') }} alt="" class="rounded-md w-full h-full">
                                     </a>
-                                    <a href="assets/images/post/img11.jpg" class="relative">  
-                                        <img src="assets/images/post/img11.jpg" alt="" class="rounded-md w-full h-full">
+                                    <a href={{ asset('assets/images/post/img11.jpg') }} class="relative">  
+                                        <img src={{ asset('assets/images/post/img11.jpg') }} alt="" class="rounded-md w-full h-full">
                                         <div class="absolute bg-gray-900 bg-opacity-30 flex justify-center items-center text-white rounded-md inset-0 text-2xl"> + 15 more </div>
                                     </a>
 
@@ -294,9 +293,9 @@
                                 </div>
                                 <div class="flex items-center space-x-3"> 
                                     <div class="flex items-center">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                        <img src={{ asset('assets/images/avatars/avatar-4.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                     </div>
                                     <div class="dark:text-gray-100">
                                         Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
@@ -306,7 +305,7 @@
                                 <div class="border-t pt-4 space-y-4 dark:border-gray-600">
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i
@@ -316,7 +315,7 @@
                                     </div>
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i>
@@ -353,7 +352,7 @@
                                 <div class="flex flex-1 items-center space-x-4">
                                     <a href="#">
                                         <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                                            <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                            <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                         </div>
                                     </a>
                                     <span class="block capitalize font-semibold dark:text-gray-100"> Johnson smith </span>
@@ -432,9 +431,9 @@
                                 </div>
                                 <div class="flex items-center space-x-3"> 
                                     <div class="flex items-center">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                        <img src="assets/images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                        <img src={{ asset('assets/images/avatars/avatar-4.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                        <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                     </div>
                                     <div class="dark:text-gray-100">
                                         Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
@@ -444,7 +443,7 @@
                                 <div class="border-t pt-4 space-y-4 dark:border-gray-600">
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i
@@ -454,7 +453,7 @@
                                     </div>
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                             <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i>
@@ -484,7 +483,7 @@
                               <div class="flex flex-1 items-center space-x-4">
                                   <a href="#">
                                       <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">  
-                                          <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                          <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                       </div>
                                   </a>
                                   <span class="block capitalize font-semibold dark:text-gray-100"> Johnson smith </span>
@@ -563,9 +562,9 @@
                               </div>
                               <div class="flex items-center space-x-3"> 
                                   <div class="flex items-center">
-                                      <img src="assets/images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
-                                      <img src="assets/images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
-                                      <img src="assets/images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                      <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                      <img src={{ asset('assets/images/avatars/avatar-4.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                      <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                   </div>
                                   <div class="dark:text-gray-100">
                                       Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
@@ -575,7 +574,7 @@
                               <div class="border-t pt-4 space-y-4 dark:border-gray-600">
                                   <div class="flex">
                                       <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                          <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                          <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                       </div>
                                       <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                           <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i
@@ -585,7 +584,7 @@
                                   </div>
                                   <div class="flex">
                                       <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                          <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                          <img src={{ asset('assets/images/avatars/avatar-1.jpg') }} alt="" class="absolute h-full rounded-full w-full">
                                       </div>
                                       <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
                                           <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i>
@@ -624,30 +623,32 @@
 
                             <div class="bg-gray-50 dark:bg-gray-800 border-b border-gray-100 flex items-baseline justify-between py-4 px-6 dark:border-gray-800">
                                 <h2 class="font-semibold text-lg">Who to follow</h2>
-                                <a href="#"> Refresh</a>
-                            </div>
-                           @foreach ($users as $user)
+                            </div> 
+                            @foreach ($users as $user)
                                 <div class="divide-gray-300 divide-gray-50 divide-opacity-50 divide-y px-4 dark:divide-gray-800 dark:text-gray-100">
                                 <div class="flex items-center justify-between py-3">
                                     <div class="flex flex-1 items-center space-x-4">
                                         <a href="profile.html">
-                                            <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 rounded-full w-10 h-10">
+                                            <img src={{ asset('assets/images/avatars/avatar-2.jpg') }} class="bg-gray-200 rounded-full w-10 h-10">
                                         </a>
                                         <div class="flex flex-col">
-                                            <span class="block capitalize font-semibold"> {{$user->name}} </span>
+                                            <span class="block capitalize font-semibold">{{$user->name}}</span>
                                         </div>
                                     </div>
-                                    <form action="follow" method="POST">
-                                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                                        <input type="hidden" name="following_user_id" value="{{$user->id}}">
-                                        <button type="submit">
-                                            <a href="#" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Follow </a>
+                                    <form action="{{{ route('following.store', $user) }}}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="mt-2">
+                                            @if (Auth::user()->follows()->where('following_user_id', $user->id)->first())
+                                                 <span class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Unfollow</span> 
+                                            @else
+                                                <span class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Follow</span>     
+                                            @endif
+                                           
                                         </button>
-                                    </form>
+                                       </form>
                                 </div>
-                            </div>
-                           @endforeach
-
+                            </div> 
+                        @endforeach
                         </div>
 
                         <div class="mt-5">
@@ -662,7 +663,7 @@
     
                                     <div class="bg-red-500 max-w-full h-32 rounded-lg relative overflow-hidden uk-transition-toggle"> 
                                         <a href="#story-modal" uk-toggle>
-                                            <img src="assets/images/post/img2.jpg" class="w-full h-full absolute object-cover inset-0">
+                                            <img src={{ asset('assets/images/post/img2.jpg') }} class="w-full h-full absolute object-cover inset-0">
                                         </a>
                                         <div class="flex flex-1 justify-around items-center absolute bottom-0 w-full p-2 text-white custom-overly1 uk-transition-slide-bottom-medium">   
                                             <a href="#"> <i class="uil-heart"></i> 150 </a>
@@ -672,7 +673,7 @@
                                     
                                     <div class="bg-red-500 max-w-full h-40 rounded-lg relative overflow-hidden uk-transition-toggle"> 
                                         <a href="#story-modal" uk-toggle>
-                                            <img src="assets/images/post/img7.jpg" class="w-full h-full absolute object-cover inset-0">
+                                            <img src={{ asset('assets/images/post/img7.jpg') }} class="w-full h-full absolute object-cover inset-0">
                                         </a>
                                         <div class="flex flex-1 justify-around items-center absolute bottom-0 w-full p-2 text-white custom-overly1 uk-transition-slide-bottom-medium">   
                                             <a href="#"> <i class="uil-heart"></i> 150 </a>
@@ -682,7 +683,7 @@
                                     
                                     <div class="bg-red-500 max-w-full h-40 -mt-8 rounded-lg relative overflow-hidden uk-transition-toggle"> 
                                         <a href="#story-modal" uk-toggle>
-                                            <img src="assets/images/post/img5.jpg" class="w-full h-full absolute object-cover inset-0">
+                                            <img src={{ asset('assets/images/post/img5.jpg') }} class="w-full h-full absolute object-cover inset-0">
                                         </a>
                                         <div class="flex flex-1 justify-around  items-center absolute bottom-0 w-full p-2 text-white custom-overly1 uk-transition-slide-bottom-medium">   
                                             <a href="#"> <i class="uil-heart"></i> 150 </a>
@@ -692,7 +693,7 @@
     
                                     <div class="bg-red-500 max-w-full h-32 rounded-lg relative overflow-hidden uk-transition-toggle"> 
                                         <a href="#story-modal" uk-toggle>
-                                            <img src="assets/images/post/img3.jpg" class="w-full h-full absolute object-cover inset-0">
+                                            <img src={{ asset('assets/images/post/img3.jpg') }} class="w-full h-full absolute object-cover inset-0">
                                         </a>
                                         <div class="flex flex-1 justify-around  items-center absolute bottom-0 w-full p-2 text-white custom-overly1 uk-transition-slide-bottom-medium">   
                                             <a href="#"> <i class="uil-heart"></i> 150 </a>

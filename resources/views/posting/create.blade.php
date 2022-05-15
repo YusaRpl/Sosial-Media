@@ -1,4 +1,4 @@
-@extends('posting.layout.main')
+@extends('layout.main')
 @section('main_content')
 <style>
   img {

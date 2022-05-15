@@ -1,5 +1,5 @@
     <!-- Story modal -->
-    <div id="" class="uk-modal-container" uk-modal>
+    <div id="story-modal" class="uk-modal-container" uk-modal>
         <div class="uk-modal-dialog story-modal">
             <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
 
@@ -214,10 +214,8 @@
         </div>
     </div>
 
-
-
-    <!-- following -->
-    <div id="Following" class="uk-modal-container" uk-modal>
+     <!-- following -->
+     <div id="Following" class="uk-modal-container" uk-modal>
 
         <div class="bg-white dark:bg-gray-900 shadow-md rounded-md overflow-hidden uk-modal-dialog" style="width: 50%">
 
@@ -238,19 +236,20 @@
                         <span class="block capitalize text-sm"> {{$user->pivot->created_at->diffForHumans()}} </span>
                     </div>
                 </div>
-                <form action="follow" method="POST">
-                    <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                    <input type="hidden" name="following_user_id" value="{{$user->id}}">
-                    <button type="submit">
-                        <a href="#" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Follow </a>
-                    </button>
-                </form>
+                    <form action="{{{ route('following.store', $user) }}}" method="POST">
+                        @csrf
+                        <button type="submit" class="mt-2">
+                            @if (Auth::user()->follows()->where('following_user_id', $user->id)->first())
+                            <span class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Unfollow </span>
+                            @else
+                            <span class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Follow </span>
+                            @endif
+                           
+                        </button>
+                       </form>
             </div>
             </div>
             @endforeach
-           <div class="lihat" style>
-            <a href="#" class=""> Lihat selengkapnya </a>
-        </div>
         </div>
     </div>
 
@@ -269,24 +268,21 @@
                 <div class="flex items-center justify-between py-3">
                     <div class="flex flex-1 items-center space-x-4">
                         <a href="profile.html">
-                            <img src="assets/images/avatars/avatar-2.jpg" class="bg-gray-200 rounded-full w-10 h-10">
+                            <img src={{asset('assets/images/avatars/avatar-2.jpg')}} class="bg-gray-200 rounded-full w-10 h-10">
                         </a>
                         <div class="flex flex-col">
                             <span class="block capitalize font-semibold"> {{$user->name}} </span>
                         </div>
                     </div>
-                    <form action="follow" method="POST">
-                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                        <input type="hidden" name="following_user_id" value="{{$user->id}}">
-                        <button type="submit">
-                            <a href="#" class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Follow </a>
+                    <form action="{{{ route('following.storeHapus', $user) }}}" method="POST">
+                        @csrf
+                        <button type="submit" class="mt-2">
+                            <span class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Delete </span>   
                         </button>
-                    </form>
+                       </form>
                 </div>
             </div>
            @endforeach
 
         </div>
     </div>
-
-    

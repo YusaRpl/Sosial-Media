@@ -1,14 +1,14 @@
 @extends('layout.main')
 @section('main_content')
     
-            <div class="container pro-container m-auto"  style="margin-top: 50px">
+            <div class="container pro-container m-auto">
                 
                 <!-- profile-cover-->
                 <div class="flex lg:flex-row flex-col items-center lg:py-8 lg:space-x-8">
 
                     <div>
                         <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-1 rounded-full m-0.5 mr-2  w-56 h-56 relative overflow-hidden uk-transition-toggle">  
-                            <img src="assets/images/avatars/avatar-7.jpg" class="bg-gray-200 border-4 border-white rounded-full w-full h-full dark:border-gray-900">
+                            <img src={{ asset('assets/images/avatars/avatar-7.jpg')}} alt="" class="bg-gray-200 border-4 border-white rounded-full w-full h-full dark:border-gray-900">
 
                             <div class="absolute -bottom-3 custom-overly1 flex justify-center pt-4 pb-7 space-x-3 text-2xl text-white uk-transition-slide-bottom-medium w-full">
                                 <a href="#" class="hover:text-white">
@@ -32,16 +32,59 @@
                             </div>
 
                             <div class="capitalize flex font-semibold space-x-3 text-center text-sm my-2">
-                                @foreach ($users as $user)
-                                @if ($user->id === Auth::user()->id)
-                                
-                               <a href="#" class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700">Edit Profile</a>
+                               @if ($user->id == auth()->user()->id)
+                               <a href="#" class="bg-pink-500 shadow-sm p-2 pink-500 px-6 rounded-md text-white hover:text-white hover:bg-pink-600"> Edit profile</a>
+                               <div>
+
+                                <a href="#" class="bg-gray-300 flex h-12 h-full items-center justify-center rounded-full text-xl w-9 dark:bg-gray-700"> 
+                                    <i class="icon-feather-chevron-down"></i> 
+                                </a>
+                                    
+                                <div class="bg-white w-56 shadow-md mx-auto p-2 mt-12 rounded-md text-gray-500 hidden text-base dark:bg-gray-900" uk-drop="mode: click">
+                              
+                                  <ul class="space-y-1">
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-700">
+                                         <i class="uil-user-minus mr-2"></i>Unfriend
+                                        </a> 
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-700">
+                                         <i class="uil-eye-slash  mr-2"></i> Change password
+                                        </a> 
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 hover:bg-gray-200 hover:text-gray-800 rounded-md dark:hover:bg-gray-700">
+                                         <i class="uil-share-alt mr-2"></i> Share This Profile
+                                        </a> 
+                                    </li>
+                                    <li>
+                                      <hr class="-mx-2 my-2  dark:border-gray-700">
+                                    </li>
+                                    <li> 
+                                        <a href="#" class="flex items-center px-3 py-2 text-red-500 hover:bg-red-100 hover:text-red-500 rounded-md dark:hover:bg-red-600">
+                                         <i class="uil-stop-circle mr-2"></i> Block
+                                        </a> 
+                                    </li>
+                                  </ul>
+                              
+                                </div>
+
+                                </div>
                                @else
-                               <a href="#" class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Add friend</a> 
-                               @endif
-                               @endforeach
-                                <a href="#" class="bg-pink-500 shadow-sm p-2 pink-500 px-6 rounded-md text-white hover:text-white hover:bg-pink-600"> Send message</a>
-                                <div>
+                               <form action="{{{ route('following.store', $user) }}}" method="POST">
+                                @csrf
+                                <button type="submit" class="mt-2">
+                                    @if (Auth::user()->follows()->where('following_user_id', $user->id)->first())
+                                         <span class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Unfollow</span> 
+                                    @else
+                                        <span class="bg-gray-300 shadow-sm p-2 px-6 rounded-md dark:bg-gray-700"> Follow</span>     
+                                    @endif
+                                   
+                                </button>
+                               </form>
+                               <a href="#" class="bg-pink-500 shadow-sm p-2 pink-500 px-6 rounded-md text-white hover:text-white hover:bg-pink-600"> Send message</a>
+                               <div>
 
                                 <a href="#" class="bg-gray-300 flex h-12 h-full items-center justify-center rounded-full text-xl w-9 dark:bg-gray-700"> 
                                     <i class="icon-feather-chevron-down"></i> 
@@ -78,16 +121,16 @@
                                 </div>
 
                                 </div>
-
+                               @endif
                             </div>
 
                             <div class="divide-gray-300 divide-transparent divide-x grid grid-cols-3 lg:text-left lg:text-lg mt-3 text-center w-full dark:text-gray-100">
-                                <div class="flex lg:flex-row flex-col"> {{Auth::user()->postingku()->count()}} <strong class="lg:pl-2">Posts</strong></div>
+                                <div class="flex lg:flex-row flex-col"> {{$posting->count()}} <strong class="lg:pl-2">Posts</strong></div>
                                 <a href="#Followers" uk-toggle>
-                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{Auth::user()->followers()->count()}} <strong class="lg:pl-2">Followers</strong></div>
+                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{$followers->count()}} <strong class="lg:pl-2">Followers</strong></div>
                                 </a>
                                 <a href="#Following" uk-toggle>
-                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{Auth::user()->follows()->count()}} <strong class="lg:pl-2">Following</strong></div>
+                                <div class="lg:pl-4 flex lg:flex-row flex-col"> {{$following->count()}} <strong class="lg:pl-2">Following</strong></div>
                                 </a>
                             </div>
                     </div>
@@ -101,13 +144,13 @@
                         </div>
                     </a>
                     <a href="#story-modal" uk-toggle>
-                        <img src="assets/images/avatars/avatar-lg-1.jpg" alt="" class="w-full lg:h-60 h-40 rounded-md object-cover">
+                        <img src={{ asset('assets/images/avatars/avatar-lg-1.jpg')}} alt= "" class="w-full lg:h-60 h-40 rounded-md object-cover">
                     </a>
                     <a href="#story-modal" uk-toggle>
-                        <img src="assets/images/post/img2.jpg" alt="" class="w-full lg:h-60 h-40 rounded-md object-cover">
+                        <img src={{ asset('assets/images/post/img2.jpg')}} alt= "" class="w-full lg:h-60 h-40 rounded-md object-cover">
                     </a>
                     <a href="#story-modal" uk-toggle>
-                        <img src="assets/images/post/img7.jpg" alt="" class="w-full lg:h-60 h-40 rounded-md object-cover uk-visible@s">
+                        <img src={{ asset('assets/images/post/img7.jpg')}} alt= "" class="w-full lg:h-60 h-40 rounded-md object-cover uk-visible@s">
                     </a>
                 </div>
 
@@ -122,7 +165,7 @@
                 <div class="my-6 grid lg:grid-cols-4 grid-cols-2 gap-1.5 hover:text-yellow-700 uk-link-reset">
                 <div>
                     <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/avatars/avatar-lg-1.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/avatars/avatar-lg-1.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -134,7 +177,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/post/img1.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/post/img1.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -146,7 +189,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/post/img2.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/post/img2.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -158,7 +201,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/post/img3.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/post/img3.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -170,7 +213,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/post/img4.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/post/img4.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -182,7 +225,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/post/img5.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/post/img5.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -194,7 +237,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/avatars/avatar-1.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/avatars/avatar-1.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>
@@ -206,7 +249,7 @@
                     </div>
                     <div>
                         <div class="bg-red-500 max-w-full lg:h-64 h-40 rounded-md relative overflow-hidden uk-transition-toggle" tabindex="0"> 
-                            <img src="assets/images/avatars/avatar-6.jpg" class="w-full h-full absolute object-cover inset-0">
+                            <img src={{ asset('assets/images/avatars/avatar-6.jpg')}} alt="" class="w-full h-full absolute object-cover inset-0">
 
                             <div class="absolute bg-black bg-opacity-40 bottom-0 flex h-full items-center justify-center space-x-5 text-lg text-white uk-transition-scale-up w-full">   
                                 <a href="#story-modal" uk-toggle class="flex items-center"> <ion-icon name="heart" class="mr-1"></ion-icon> 150 </a>

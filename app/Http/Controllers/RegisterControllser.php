@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class RegisterControllser extends Controller
 {
         public function create(){
-            return view('form-register',[
+            return view('login_register.form-register',[
                 'title' => 'form-register',
             ]);
         }

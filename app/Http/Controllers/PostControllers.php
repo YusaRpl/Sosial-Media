@@ -5,21 +5,16 @@ use Illuminate\Http\Request;
 use App\Models\post;
 use App\Models\User;
 use App\Models\posting;
+use Illuminate\Support\Facades\Auth;
+
 class PostControllers extends Controller
 {
     public function index(){
+        
         return view('trending', [
             "title" => "trending",
-            "users" => User::latest()->get(),
-            'posts' => posting::where('user_id', auth()->user()->id)->get()
-            
-        ]);
-    }
-    public function trending(){
-        return view('trending', [
-            "title" => "trending",
-            "users" => User::latest()->get(),
-            'posts' => posting::where('user_id', auth()->user()->id)->get()
+            "users" => User::where('id', '!=', auth()->user()->id)->get(),
+            'posts' => posting::where('user_id', auth()->user()->id)->get(),
         ]);
     }
     public function setting(){
@@ -29,19 +24,15 @@ class PostControllers extends Controller
             'posts' => posting::where('user_id', auth()->user()->id)->get()
         ]);
     }
-    public function profile(){
+    public function follows(User $user)
+    {
         return view('profile',[
-            "title" => "profile",
-            "users" => User::latest()->get(),
-            'posts' => posting::where('user_id', auth()->user()->id)->get()
+            'title' => 'profile',
+            'user' => $user,
+            'posting' => posting::where('user_id', $user->id),
+            'following' => $user->follows,
+            'followers' => $user->followers
         ]);
-    }
-    public function form_login(){
-        return view('form-login', ["
-        title" => "form-login",
-        "users" => User::latest()->get(),
-        'posts' => posting::where('user_id', auth()->user()->id)->get()
-    ]);
     }
     public function chat(){
         return view('chat', [

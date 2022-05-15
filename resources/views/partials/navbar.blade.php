@@ -4,8 +4,8 @@
                         <!-- Logo -->
                         <div id="logo" class=" uk-hidden@s">
                             <a href="home.html">
-                                <img src="assets/images/logo-mobile.png" alt="">
-                                <img src="assets/images/logo-mobile-light.png" class="logo_inverse">
+                                <img src={{ asset('assets/images/logo-mobile.png') }}alt="">
+                                <img src={{ asset('assets/images/logo-mobile-light.png') }}class="logo_inverse">
                             </a>
                         </div>
 
@@ -27,11 +27,15 @@
                     </div>
                     <div class="right-side lg:pr-4">
                          <!-- upload -->
-                        <a href="posting/create"
-                            class="bg-pink-500 flex font-bold hidden hover:bg-pink-600 hover:text-white inline-block items-center lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white">
-                            <ion-icon name="add-circle" class="-mb-1
-                             mr-1 opacity-90 text-xl uilus-circle"></ion-icon> Upload
+                       @if ($title == 'create')
+                           
+                       @else
+                       <a href="posting/create"
+                       class="bg-pink-500 flex font-bold hidden hover:bg-pink-600 hover:text-white inline-block items-center lg:block max-h-10 mr-4 px-4 py-2 rounded shado text-white">
+                       <ion-icon name="add-circle" class="-mb-1
+                        mr-1 opacity-90 text-xl uilus-circle"></ion-icon> Upload
                         </a>
+                       @endif
                         
                          <!-- Notification -->
 
@@ -49,7 +53,7 @@
                             <ul class="dropdown_scrollbar" data-simplebar>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-1.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <p> <strong>Adrian Mohani</strong>  Lorem ipsum dolor cursus
@@ -61,7 +65,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <p>
@@ -74,7 +78,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-3.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <p>
@@ -87,7 +91,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-1.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <p>
@@ -100,7 +104,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-3.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <p>
@@ -131,7 +135,7 @@
                             <ul class="dropdown_scrollbar" data-simplebar>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-1.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> John menathon </strong> <time> 6:43 PM</time>
@@ -141,7 +145,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> Zara Ali </strong> <time>12:43 PM</time>
@@ -151,7 +155,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-3.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> Mohamed Ali </strong> <time> Wed </time>
@@ -161,7 +165,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-1.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-1.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> John menathon </strong> <time> Sun</time>
@@ -171,7 +175,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-2.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> Zara Ali </strong> <time> Fri</time>
@@ -181,7 +185,7 @@
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <div class="drop_avatar"> <img src="assets/images/avatars/avatar-3.jpg" alt="">
+                                        <div class="drop_avatar"> <img src={{ asset('assets/images/avatars/avatar-3.jpg') }}alt="">
                                         </div>
                                         <div class="drop_content">
                                             <strong> Mohamed Ali </strong> <time>1 Week ago</time>
@@ -196,7 +200,7 @@
                         <!-- profile -->
 
                         <a href="#">
-                            <img src="assets/images/avatars/avatar-2.jpg" class="header-avatar" alt="">
+                            <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}class="header-avatar" alt="">
                         </a>
                         <div uk-drop="mode: click;offset:9" class="header_dropdown profile_dropdown border-t">
                             <ul>

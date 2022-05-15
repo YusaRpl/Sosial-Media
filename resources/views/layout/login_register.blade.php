@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 @include('partials.head')
-
 <body>
-
     <div id="wrapper">
-       @include('partials.sidebar')
-        <div class="main_content">
-
-        </div>
+            @yield('main_content')
     </div>
-    @include('partials.story')
     @include('partials.scriptJs')
 </body>
-
 </html>

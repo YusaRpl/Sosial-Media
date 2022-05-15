@@ -1,6 +1,5 @@
-@extends('layout.loginRegister')
-
-        @section('loginRegsiter')
+@extends('layout.login_register')
+        @section('main_content')
         <!-- header-->
         <div class="bg-white py-4 shadow dark:bg-gray-800">
             <div class="max-w-6xl mx-auto">
@@ -22,36 +21,32 @@
         </div>
 
         <!-- Content-->
+
         <div>
             <div class="lg:p-12 max-w-md max-w-xl lg:my-0 my-12 mx-auto p-6 space-y-">
-                @if (session()->has('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{session('success')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-
-        @if (session()->has('loginError'))
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{session('loginError')}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        @endif
-                <h1 class="lg:text-3xl text-xl font-semibold  mb-6"> Log in</h1>
-                <p class="mb-2 text-black text-lg"> Email or Username</p>
-                <form action="form-login" method="POST">
+                <h1 class="lg:text-3xl text-xl font-semibold mb-6">Regsiter</h1>
+                <p class="mb-2 text-black text-lg"> Register to manage your account </p>
+                <form action="/form-register" method="post">
                     @csrf
-                    <input type="email" name="email" placeholder="example@mydomain.com" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800  @error('email') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="text" name="name" placeholder="Name" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800 @error('name') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;" value="{{old('name')}}">
+                    @error('name')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                    <input type="text" name="username" placeholder="Username" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800 @error('name') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;" value="{{old('name')}}">
+                    @error('username')
+                    <div class="invalid-feedback">{{$message}}</div>
+                    @enderror
+                    <input type="email" name="email" placeholder="Email" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800 @error('email') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;" value="{{old('email')}}">
                     @error('email')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
-                    <input type="password" name="password" placeholder="***********" class="bg-gray-200 mb-2 shadow-none dark:bg-gray-800  @error('password') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;">
+                    <input type="password" name="password" placeholder="Password" class="bg-gray-200 mb-2 shadow-none  dark:bg-gray-800 @error('password') is-invalid @enderror" style="border: 1px solid #d3d5d8 !important;">
                     @error('password')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Login</button>
+                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Sign in</button>
                     <div class="text-center mt-5 space-x-2">
-                    <p class="text-base"> Not registered? <a href="/form-register" class=""> Create a account </a></p>
+                        <p class="text-base"> Do you have an account? <a href="/form-login"> Login </a></p>
                     </div>
                 </form>
             </div>

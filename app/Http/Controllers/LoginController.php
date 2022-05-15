@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index(){
-        return view('form-login',[
+        return view('login_register.form-login',[
             'title' => 'form-login',
         ]);
     }
@@ -19,6 +19,7 @@ class LoginController extends Controller
         ]);
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
+            $username = auth()->user()->username;
             return redirect()->intended('/trending');
         }
         return back()->with('loginError', 'Login Failed!');
