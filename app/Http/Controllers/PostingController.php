@@ -128,4 +128,20 @@ class PostingController extends Controller
         return redirect('/')->with('success', 'Post has been deleted!');
     }
 
+    public function ajaxRequestPost(Request $request)
+    {
+        dd($request);
+        \DB::table('posts')->insert([
+            'title' => $request->Code, //This Code coming from ajax request
+            'details' => $request->Chief, //This Chief coming from ajax request
+        ]);
+
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data inserted successfully'
+            ]
+        );
+    }
+
 }

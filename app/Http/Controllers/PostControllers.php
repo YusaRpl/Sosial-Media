@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\post;
-use App\Models\User;
 use App\Models\posting;
+use App\Models\User;
+use App\Models\Todo;
 use Illuminate\Support\Facades\Auth;
 
 class PostControllers extends Controller
 {
+    public function belajar(){
+        return view('belajar', [
+            "todo" => Todo::all()
+        ]);
+    }
     public function index(){
-        
         return view('trending', [
             "title" => "trending",
             "users" => User::where('id', '!=', auth()->user()->id)->get(),

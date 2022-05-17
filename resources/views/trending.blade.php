@@ -112,7 +112,6 @@
                             
     
                             <div class="py-3 px-4 space-y-3"> 
-                               
                                 <div class="flex space-x-4 lg:font-bold">
                                     <a href="#" class="flex items-center space-x-2">
                                         <div class="p-2 rounded-full text-black">
@@ -707,10 +706,85 @@
                         </div>
 
                     </div>
-
-                </div>               
-          
-
+                </div> 
             </div>
+        
+            @endsection
 
-        @endsection
+
+            
+            {{-- <script type="text/javascript">
+
+
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+            
+                $(".btn-submit").click(function(e){
+            
+                    e.preventDefault();
+            
+                    var title = $("input[name=title]").val();
+                    var details = $("input[name=details]").val();
+                    var url = '{{ url('postinsert') }}';
+            
+                    $.ajax({
+                       url:url,
+                       method:'POST',
+                       data:{
+                              Code:title, 
+                              Chief:details
+                            },
+                       success:function(response){
+                          if(response.success){
+                              alert(response.message) //Message come from controller
+                          }else{
+                              alert("Error")
+                          }
+                       },
+                       error:function(error){
+                          console.log(error)
+                       }
+                    });
+                });
+            
+            </script> --}}
+
+        {{-- <script>
+            $(document).ready(function(){
+            $("#like").click(function(e){
+            
+                    e.preventDefault();
+            
+                    var user_id = $("input[name=user_id]").val();
+                    var posting_id = $("input[name=posting_id]").val();
+                    var value = $("input[name=value]").val();
+                    var url = '{{ url('like') }}';
+            
+                    $.ajax({
+                       url:url,
+                       method:'post',
+                       data:{
+                              user_id:user_id, 
+                              post_id:posting_id,
+                              value:value
+                            },
+                       success:function(response){
+                          if(response.success){
+                              alert(response.message)
+                          }else{
+                              alert("Error")
+                          }
+                       },
+                       error:function(error){
+                          console.log(error)
+                       }
+                    });
+                });
+    
+                
+            })     
+            </script> --}}
+            

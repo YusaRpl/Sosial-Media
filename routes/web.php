@@ -14,11 +14,15 @@ Route::get('/',[PostControllers::class, 'index']);
 Route::get('/trending/{user:username}',[PostControllers::class, 'index']);
 Route::get('/setting/{user:username}',[PostControllers::class, 'setting']);
 Route::get('profile/{user:username}/follows', [PostControllers::class, 'follows'])->name('profile.follows');
-// Route::get('profile/{user:username}/following', [FollowingControllsr::class, 'index'])->name('profile.index');
 Route::post('profile/{user:username}', [FollowingControllsr::class, 'store'])->name('following.store');
 Route::post('profile/{user:username}/delete', [FollowingControllsr::class, 'storeHapus'])->name('following.storeHapus');
 
-
+Route::get('belajar', [PostControllers::class, 'belajar']);
+// // Route::post('postinsert', 'FollowingControllsr@ajaxRequestPost');
+// // Route::post('postinsert', [PostingController::class, 'ajaxRequestPost'])->name('@ajaxRequestPost');
+// Route::get('postinsert', 'PostingController@ajaxRequest');
+// Route::post('postinsert', 'PostingController@ajaxRequestPost');
+Route::resource('todo', CrudController::class);
 
 
 Route::get('/chat/{user:username}', [PostControllers::class, 'chat']);

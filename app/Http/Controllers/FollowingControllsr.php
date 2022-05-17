@@ -50,8 +50,4 @@ class FollowingControllsr extends Controller
         Auth::user()->hapus(auth()->user());
        return back()->with("success", "You are follow the user");
     }
-
-
-
-    
 }

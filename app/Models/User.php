@@ -90,13 +90,13 @@ class User extends Authenticatable
 
     public function unfollow (User $user)
     {
-        dd($user);
+        // dd($user);
         return $this->follows()->detach($user);
     }
 
     public function hapus()
     {
-        dd(auth()->user());
+        // dd(auth()->user());
         return $this->followers()->detach(auth()->user());
     }
 
