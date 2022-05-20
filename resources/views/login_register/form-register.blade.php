@@ -44,7 +44,7 @@
                     @error('password')
                     <div class="invalid-feedback">{{$message}}</div>
                     @enderror
-                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Sign in</button>
+                    <button type="submit" class="bg-gradient-to-br from-pink-500 py-3 rounded-md text-white text-xl to-red-400 w-full">Register</button>
                     <div class="text-center mt-5 space-x-2">
                         <p class="text-base"> Do you have an account? <a href="/form-login"> Login </a></p>
                     </div>

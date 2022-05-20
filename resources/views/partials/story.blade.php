@@ -4,7 +4,7 @@
             <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
 
                 <div class="story-modal-media">
-                    <img src="assets/images/post/img4.jpg" alt=""  class="inset-0 h-full w-full object-cover">
+                    <img src="{{asset('assets/images/post/img4.jpg')}}" alt=""  class="inset-0 h-full w-full object-cover">
                 </div>
                 <div class="flex-1 bg-white dark:bg-gray-900 dark:text-gray-100">
                 
@@ -13,7 +13,7 @@
                         <div class="flex flex-1 items-center space-x-4">
                             <a href="#">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-8 h-8">
                                 </div>
                             </a>
@@ -42,9 +42,9 @@
                             <hr class="-mx-4 my-3">
                             <div class="flex items-center space-x-3"> 
                                 <div class="flex items-center">
-                                    <img src="assets/images/avatars/avatar-1.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white">
-                                    <img src="assets/images/avatars/avatar-4.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white -ml-2">
-                                    <img src="assets/images/avatars/avatar-2.jpg" alt="" class="w-6 h-6 rounded-full border-2 border-white -ml-2">
+                                    <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="w-6 h-6 rounded-full border-2 border-white">
+                                    <img src="{{asset('assets/images/avatars/avatar-4.jpg')}}" alt="" class="w-6 h-6 rounded-full border-2 border-white -ml-2">
+                                    <img src="" alt="" class="w-6 h-6 rounded-full border-2 border-white -ml-2">
                                 </div>
                                 <div>
                                     Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
@@ -54,14 +54,14 @@
 
                     <div class="-mt-1 space-y-1">
                         <div class="flex flex-1 items-center space-x-2">
-                            <img src="assets/images/avatars/avatar-2.jpg" class="rounded-full w-8 h-8">
+                            <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" class="rounded-full w-8 h-8">
                             <div class="flex-1 p-2">
                                 consectetuer adipiscing elit, sed diam nonummy nibh euismod
                             </div>
                         </div>
 
                         <div class="flex flex-1 items-center space-x-2">
-                            <img src="assets/images/avatars/avatar-4.jpg" class="rounded-full w-8 h-8">
+                            <img src="{{asset('assets/images/avatars/avatar-4.jpg')}}" class="rounded-full w-8 h-8">
                             <div class="flex-1 p-2">
                                 consectetuer adipiscing elit
                             </div>
@@ -92,7 +92,7 @@
             <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
 
                 <div class="story-modal-media">
-                    <img src="assets/images/post/img4.jpg" alt=""  class="inset-0 h-full w-full object-cover">
+                    <img src="{{asset('assets/images/post/img4.jpg')}}" alt=""  class="inset-0 h-full w-full object-cover">
                 </div>
                 <div class="flex-1 bg-white dark:bg-gray-900 px-4">
 
@@ -104,7 +104,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-900 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-1.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1">
@@ -125,7 +125,7 @@
                         <li>
                             <a class="flex items-center space-x-4 bg-gray-100 dark:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1 font-semibold">
@@ -139,7 +139,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-3.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-3.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1">
@@ -153,7 +153,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-4.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-4.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1 font-semibold">
@@ -167,7 +167,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-5.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-5.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1">
@@ -181,7 +181,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-6.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-6.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1 font-semibold">
@@ -195,7 +195,7 @@
                         <li>
                             <a class="flex items-center space-x-4 hover:bg-gray-100 dark:hover:bg-gray-800 p-2 rounded-md cursor-pointer">
                                 <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
-                                    <img src="assets/images/avatars/avatar-2.jpg"
+                                    <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}"
                                         class="bg-gray-200 border border-white rounded-full w-12 h-12">
                                 </div>
                                 <div class="flex-1">
@@ -268,13 +268,13 @@
                 <div class="flex items-center justify-between py-3">
                     <div class="flex flex-1 items-center space-x-4">
                         <a href="profile.html">
-                            <img src={{asset('assets/images/avatars/avatar-2.jpg')}} class="bg-gray-200 rounded-full w-10 h-10">
+                            <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" class="bg-gray-200 rounded-full w-10 h-10">
                         </a>
                         <div class="flex flex-col">
                             <span class="block capitalize font-semibold"> {{$user->name}} </span>
                         </div>
                     </div>
-                    <form action="{{{ route('following.storeHapus', $user) }}}" method="POST">
+                    <form action="{{ route('following.storeHapus', $user) }}" method="POST">
                         @csrf
                         <button type="submit" class="mt-2">
                             <span class="border border-gray-200 font-semibold px-4 py-1 rounded-full hover:bg-pink-600 hover:text-white hover:border-pink-600 dark:border-gray-800"> Delete </span>   

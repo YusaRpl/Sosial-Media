@@ -3,7 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- Favicon -->
-    <link href={{ asset('assets/images/favicon.png') }} rel="icon" type="image/png">
+    <link href="{{ asset('assets/images/favicon.png') }}" rel="icon" type="image/png">
     
     <!-- Basic Page Needs
     ================================================== -->
@@ -14,15 +14,15 @@
 
     <!-- icons
     ================================================== -->
-    <link rel="stylesheet" href={{ asset('assets/css/icons.css')}}>
+    <link rel="stylesheet" href="{{ asset('assets/css/icons.css')}}">
 
     <!-- CSS 
     ================================================== -->
-    <link rel="stylesheet" href={{ asset('assets/css/uikit.css') }}>
-    <link rel="stylesheet" href={{ asset('assets/css/style.css') }}>
-    <link rel="stylesheet" href={{ asset('assets/css/tailwind.css') }}>
+    <link rel="stylesheet" href="{{ asset('assets/css/uikit.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
 
     {{-- untuk insert dengan menggunakan ajax --}}
-    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="{{asset('assets/js/jquery-3.3.1.min')}}"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>

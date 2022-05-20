@@ -35,8 +35,20 @@ class LikeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StorelikeRequest $request)
-    {
-        //
+    { 
+        dd($request);
+        $like = new like();
+       
+            $like->user_id = $request->user_id;
+            $like->posting_id = $request->post_id;
+            $like->value = $request->value;
+            $like->save();
+        return response()->json(
+            [
+                'success' => true,
+                'message' => 'Data inserted successfully'
+            ]
+        );
     }
 
     /**

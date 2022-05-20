@@ -8,8 +8,8 @@
                         <img src="assets/images/logo.png" alt="" class="w-32">
                     </a>
                     <div class="capitalize flex font-semibold hidden lg:block my-2 space-x-3 text-center text-sm">
-                        <a href="form-login.html" class="py-3 px-4">Login</a>
-                        <a href="form-register.html" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Register</a>
+                        <a href="/form-login" class="py-3 px-4">Login</a>
+                        <a href="/form-register" class="bg-pink-500 pink-500 px-6 py-3 rounded-md shadow text-white">Register</a>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         
         <!-- Footer -->
 
-        <div class="lg:mb-5 py-3 uk-link-reset">
+        <div class="lg:mb-5 py-3 uk-link-reset" style="margin-top: 110px">
             <div class="flex flex-col items-center justify-between lg:flex-row max-w-6xl mx-auto lg:space-y-0 space-y-3">
                 <div class="flex space-x-2 text-gray-700 uppercase">
                     <a href="#"> About</a>

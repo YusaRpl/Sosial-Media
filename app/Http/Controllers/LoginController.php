@@ -20,7 +20,7 @@ class LoginController extends Controller
         if(Auth::attempt($credentials)){
             $request->session()->regenerate();
             $username = auth()->user()->username;
-            return redirect()->intended('/trending');
+            return redirect()->intended('/trending/'.$username);
         }
         return back()->with('loginError', 'Login Failed!');
     }
@@ -31,5 +31,8 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
         return redirect('/form-login');
  
+    }
+    public function username(){
+        return 'username';
     }
  }

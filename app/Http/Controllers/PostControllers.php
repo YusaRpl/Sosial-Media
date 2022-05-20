@@ -10,10 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class PostControllers extends Controller
 {
-    public function belajar(){
-        return view('belajar', [
-            "todo" => Todo::all()
-        ]);
+    public function pertama(){
+        $username = auth()->user()->username;
+        return redirect()->intended('/trending/'.$username);
     }
     public function index(){
         return view('trending', [
