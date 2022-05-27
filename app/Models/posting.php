@@ -19,4 +19,12 @@ class posting extends Model
         return 'id';
     }
 
+    public function like(){
+        return $this->hasMany(like::class)->latest();
+    }
+
+    public function comment(){
+        return $this->hasMany(comment::class)->latest();
+    }
+
 }

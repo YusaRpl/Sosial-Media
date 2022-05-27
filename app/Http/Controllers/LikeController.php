@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\like;
-use App\Http\Requests\StorelikeRequest;
-use App\Http\Requests\UpdatelikeRequest;
+use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class LikeController extends Controller
 {
@@ -31,24 +31,36 @@ class LikeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StorelikeRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StorelikeRequest $request)
-    { 
-        dd($request);
+    public function store(Request $request)
+    {
         $like = new like();
        
+            $like->username = $request->username;
             $like->user_id = $request->user_id;
             $like->posting_id = $request->post_id;
             $like->value = $request->value;
-            $like->save();
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Data inserted successfully'
-            ]
-        );
+            $parameter = like::where('user_id', $request->user_id)->where('posting_id', $request->post_id)->exists();
+            if($parameter){
+                like::where('user_id', $request->user_id)->where('posting_id', $request->post_id)->delete();
+                return response()->json(
+                    [
+                        'sudah' => true,
+                        'message' => 'Data inserted successfully'
+                    ]
+                    );
+            }else{
+                $like->save();
+                return response()->json(
+                    [
+                        'success' => true,
+                        'message' => 'Data inserted successfully'
+                    ]
+                    );
+            }
+                
     }
 
     /**
@@ -76,11 +88,11 @@ class LikeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdatelikeRequest  $request
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\like  $like
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdatelikeRequest $request, like $like)
+    public function update(Request $request, like $like)
     {
         //
     }

@@ -236,7 +236,7 @@
                         <span class="block capitalize text-sm"> {{$user->pivot->created_at->diffForHumans()}} </span>
                     </div>
                 </div>
-                    <form action="{{{ route('following.store', $user) }}}" method="POST">
+                    <form action="{{ route('following.store', $user) }}" method="POST">
                         @csrf
                         <button type="submit" class="mt-2">
                             @if (Auth::user()->follows()->where('following_user_id', $user->id)->first())

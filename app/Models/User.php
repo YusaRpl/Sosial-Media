@@ -74,6 +74,7 @@ class User extends Authenticatable
                             ->latest()
                             ->get();
     }
+
     public function post_user(User $user)
     {
         $idku = $user->id;
@@ -83,6 +84,10 @@ class User extends Authenticatable
                             ->get();
     }
 
+    public function user_like(){
+        return $this->hasMany(like::class);
+    }
+
     public function follow (User $user)
     {
         return $this->follows()->save($user);
@@ -90,13 +95,11 @@ class User extends Authenticatable
 
     public function unfollow (User $user)
     {
-        // dd($user);
         return $this->follows()->detach($user);
     }
 
     public function hapus()
     {
-        // dd(auth()->user());
         return $this->followers()->detach(auth()->user());
     }
 

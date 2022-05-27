@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\commentControllers;
 use App\Http\Controllers\FollowingControllsr;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
@@ -17,7 +18,10 @@ Route::get('/setting/{user:username}',[PostControllers::class, 'setting']);
 Route::get('profile/{user:username}/follows', [PostControllers::class, 'follows'])->name('profile.follows');
 Route::post('profile/{user:username}', [FollowingControllsr::class, 'store'])->name('following.store');
 Route::post('profile/{user:username}/delete', [FollowingControllsr::class, 'storeHapus'])->name('following.storeHapus');
-Route::post('/like', [LikeController::class, 'store'])->name('like');
+
+Route::post('/like', [LikeController::class, 'store'])->name('like.add');
+Route::post('/comment', [commentControllers::class, 'store'])->name('comment.add');
+
 Route::get('/chat/{user:username}', [PostControllers::class, 'chat']);
 Route::resource('/posting', PostingController::class);
 
@@ -28,4 +32,3 @@ Route::post('/form-register', [RegisterControllser::class, 'store']);
 Route::get('/form-login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/form-login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[loginController::class, 'logout']);
-

@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-@include('partials.head')
-<body>
-
-    <div id="wrapper">
-
-      <div class="sidebar">
-    <div class="sidebar_header border-b border-gray-200 from-gray-100 to-gray-50 bg-gradient-to-t  uk-visible@s"> 
+<div class="sidebar">
+   <div class="sidebar_header border-b border-gray-200 from-gray-100 to-gray-50 bg-gradient-to-t  uk-visible@s"> 
         <a href="#">
-            <img src={{ asset('assets/images/logo.png') }}>
-            <img src={{ asset('assets/images/logo-light.png') }} class="logo_inverse">
+            <img src="{{ asset('assets/images/logo.png') }}">
+            <img src="{{ asset('assets/images/logo-light.png') }}" class="logo_inverse">
         </a>
         <!-- btn night mode -->
         <a href="#" id="night-mode" class="btn-night-mode" data-tippy-placement="left" title="Switch to dark mode"></a>
@@ -23,10 +15,10 @@
         <div class="flex flex-col items-center my-6 uk-visible@s">
             <div
                 class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-1 rounded-full transition m-0.5 mr-2  w-24 h-24">
-                <img src={{ asset('assets/images/avatars/avatar-2.jpg') }}
+                <img src="{{ asset('assets/images/avatars/avatar-2.jpg') }}"
                     class="bg-gray-200 border-4 border-white rounded-full w-full h-full">
             </div>
-            <a href="profile" class="text-xl font-medium capitalize mt-4 uk-link-reset"> {{auth()->user()->name}}
+            <a href="/profile{{auth()->user()->username}}" class="text-xl font-medium capitalize mt-4 uk-link-reset"> {{auth()->user()->name}}
             </a>
             <div class="flex justify-around w-full items-center text-center uk-link-reset text-gray-800 mt-6">
                 <div>
@@ -98,16 +90,3 @@
         </ul>
     </div>
 </div>
-
-        <div class="main_content">
-            @include('partials.navbar')
-            @yield('main_content')
-        </div>
-
-    </div>
-
-    @include('partials.story')
-    @include('partials.scriptJs')
-</body>
-
-</html>

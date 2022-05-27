@@ -51,7 +51,7 @@
                     <div class="space-y-5 flex-shrink-0 lg:w-7/12">
 
                         <!-- post 1-->
-                        @foreach (Auth::user()->postingku() as $post)
+                        @foreach (Auth::user()->postings() as $post)
                         <div class="bg-white shadow rounded-md dark:bg-gray-900 -mx-2 lg:mx-0">
                             <!-- post header-->
                             <div class="flex justify-between items-center px-4 py-3">
@@ -111,18 +111,28 @@
                             </div>
                             
                             <div class="py-3 px-4 space-y-3"> 
+                                <div id="coba{{$post->id}}">
                                 <div class="flex space-x-4 lg:font-bold">
                                     <style>
                                         .uil-thumbs-up:hover{
                                             cursor: pointer;
                                         }
+                                        .uil-thumbs-up{
+                                            margin-top: 10px;
+                                        }
+                                        .down {
+                                            margin-top: 9px;
+                                        }
                                     </style>
                                     <form>
+                                        @csrf
+                                        <input type="hidden" name="username" value="{{auth()->user()->name}}">
                                         <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                         <input type="hidden" name="post_id" value="{{$post->id}}">
                                         <input type="hidden" name="value" value="1">
                                         <i class="uil-thumbs-up btn-like" id="btn-like"></i>
                                        </form>
+                                    <div  class="down">{{$post->like->count()}}</div>
                                     <a href="#" class="flex items-center space-x-2">
                                         <div class="p-2 rounded-full text-black">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
@@ -139,56 +149,65 @@
                                     </a>
                                 </div>
                                 <div class="flex items-center space-x-3"> 
-                                    <div class="flex items-center">
+                                      @if ($post->like->count() == 0)
+
+                                      @else
+                                      <div class="flex items-center">
                                         <img src="{{ asset('assets/images/avatars/avatar-1.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
                                         <img src="{{ asset('assets/images/avatars/avatar-4.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                         <img src="{{ asset('assets/images/avatars/avatar-2.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
                                     </div>
                                     <div class="dark:text-gray-100">
-                                        Liked <strong> Johnson</strong> and <strong> 209 Others </strong>
+                                      Liked <strong>{{$post->like[0]->username}}</strong>
+                                      @if ($post->like->skip(1)->count() == 0)
+                                            
+                                      @else
+                                        and <strong>{{$post->like->skip(1)->count()}}  Others </strong>
+                                      @endif
                                     </div>
+                                      @endif
+                                </div>
                                 </div>
                                 <div class="keterangan">
-                                    <p>
-                                        {{$post->quote}}
-                                        <a href="" class="text-dark">selengkapnya</a>
-                                    </p>
+                                    <p style="display: inline">{{substr($post->keterangan, 0,40)}}
+                                        <span id="{{$post->id}}" style="display:none">{{substr($post->keterangan, 41, null)}}</span></p>
+                                        <a href="" onclick="toggleText(this, '{{$post->id}}'); return false;" style="color: rgb(204, 203, 203)">...Read More</a>
                                 </div>
 
                                 <div class="border-t pt-4 space-y-4 dark:border-gray-600">
+
                                     <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
                                             <img src="{{ asset('assets/images/avatars/avatar-1.jpg') }}" alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
-                                            <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i
-                                                    class="uil-grin-tongue-wink"> </i> </p>
+                                            <p class="leading-6"></p>
                                             <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                         </div>
                                     </div>
-                                    <div class="flex">
-                                        <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                            <img src="{{ asset('assets/images/avatars/avatar-1.jpg') }}" alt="" class="absolute h-full rounded-full w-full">
-                                        </div>
-                                        <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
-                                            <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i>
-                                            </p>
-                                            <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
-                                        </div>
-                                    </div>
+
                                     <a href=>
                                         <p class="mt-2">
                                             Lihat semua 50 komentar
                                         </p>
                                     </a>
                                 </div>
-
+                                <style>
+                                     .fa-paper-plane:hover{
+                                            cursor: pointer;
+                                        }
+                                </style>
                                 <div class="bg-gray-100 bg-gray-100 rounded-full rounded-md relative dark:bg-gray-800">
-                                    <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none">
-                                    <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
-                                        <a href="#"> <i class="uil-image"></i></a>
-                                        <a href="#"> <i class="uil-video"></i></a>
-                                    </div>
+                                    <form>
+                                        @csrf
+                                        <input type="text" name="comment" placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none">
+                                        <input type="hidden" name="post_id" value="{{$post->id}}">
+                                        <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                                        <i class="fa-solid fa-paper-plane" id="btn-comment"></i>
+                                        {{-- <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                                            <i class="fa-solid fa-paper-plane" id="btn-comment"></i>
+                                        </div> --}}
+                                       </form>
                                 </div>
     
                             </div>
@@ -292,34 +311,90 @@
             </div>
         
             <script>
-           $(document).on("click", "#btn-like", function(e){
-                    const value = e.target.previousElementSibling.value;
-                    const post_id = e.target.previousElementSibling.previousElementSibling.value;
-                    const user_id = e.target.previousElementSibling.previousElementSibling.previousElementSibling.value;
-                    let url = '{{ route('like') }}';
-                    let _token = $('input[name="_token"]').val();
-                    $.ajax({
-                        url:url,
-                        type:"POST",
-                        data:{
-                            user_id:user_id,
-                            post_id:post_id,
-                            value:value,
-                            _token:_token
+                $(document).on("click", "#btn-like", function(e){
+                         const value = e.target.previousElementSibling.getAttribute('value');
+                         const post_id = e.target.previousElementSibling.previousElementSibling.getAttribute('value');
+                         const user_id = e.target.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
+                         const username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
+                         let url = '{{ route('like.add') }}';
+                         let _token = $('input[name="_token"]').val();
+                         let cc = e.target.parentElement.parentElement.parentElement.getAttribute('id');
+                         let like = e.target.getAttribute('id');
+                         console.log(cc);
+                         $.ajax({
+                             url:url,
+                             type:"POST",
+                             data:{
+                                 username:username,
+                                 user_id:user_id,
+                                 post_id:post_id,
+                                 value:value,
+                                 _token:_token,
+                                 },
+                            success:function(response){
+                             console.log(response)  
+                             $("#"+cc).load('/ '+'#'+cc); 
                             },
-                       success:function(response){
-                          if(response){
-                              alert("ready")
-                          }else{
-                              alert("Error")
-                          }
-                       },
-                       error:function(error){
-                          console.log(error);
-                       }
-                    });
-                    });
-            </script>
+                            sudah:function(response){
+                              console.log(response)
+                              $("#"+cc).load('/ '+'#'+cc);
+                            },
+                            error:function(error){
+                               console.log(JSON.stringify(error));
+                            }  
+                         });   
+                         }); 
+                 </script>
+
+                <script>
+                $(document).on("click", "#btn-comment", function(a){
+                        const user_id = a.target.previousElementSibling;
+                        const post_id = a.target.previousElementSibling.previousElementSibling;
+                        const comment = a.target.previousElementSibling.previousElementSibling.previousElementSibling;
+                        // let url = '{{ route('comment.add') }}';
+                        // let _token = $('input[name="_token"]').val();
+                        console.log(user_id);
+                        console.log(post_id);
+                        console.log(comment);
+                        // $.ajax({
+                        //     url:url,
+                        //     type:"POST",
+                        //     data:{
+                        //         user_id:user_id,
+                        //         post_id:post_id,
+                        //         comment:comment,
+                        //         _token:_token,
+                        //         },
+                        //     success:function(response){
+                        //     console.log(response)  
+                        //     // $("#"+cc).load('/ '+'#'+cc); 
+                        //     },
+                        //     sudah:function(response){
+                        //     console.log(response)
+                        //     // $("#"+cc).load('/ '+'#'+cc);
+                        //     },
+                        //     error:function(error){
+                        //     // console.log(JSON.stringify(error));
+                        //     }  
+                        // });   
+                        }); 
+                </script>
+
+                 <script type="text/javascript">
+
+                     function toggleText(btn, id){
+                         console.log([btn, id]);
+                         var e = document.getElementById(id);
+                         if(e.style.display == 'inline'){
+                             e.style.display = 'none';
+                             btn.innerHTML = "...Read More";
+                         }else{
+                             e.style.display = 'inline';
+                             btn.innerHTML = "Show Less";
+                         }
+                     }
+                     
+                 </script>
             @endsection
 
             

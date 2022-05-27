@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('image');
-            $table->string('quote');
             $table->text('keterangan');
             $table->timestamps();
         });

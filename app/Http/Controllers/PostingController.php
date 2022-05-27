@@ -107,7 +107,6 @@ class PostingController extends Controller
         }
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['quote'] = Str::limit(strip_tags($request->keterangan), 25, '...');
         posting::where('id', $posting->id)
             ->update($validatedData);
         return redirect('/')->with('success', 'Post has been updated!');
