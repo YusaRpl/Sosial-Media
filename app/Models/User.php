@@ -56,6 +56,11 @@ class User extends Authenticatable
         return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id')->withTimestamps();
     }
 
+    // public function comment()
+    // {
+    //     return $this->morphMany(comment::class, 'commentable')->whereNull('parent_id');
+    // }
+
     public function postings()
     {
         $following = $this->follows()->pluck('id');

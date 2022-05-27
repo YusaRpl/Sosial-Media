@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\commentControllers;
+use App\Http\Controllers\commentControllser;
 use App\Http\Controllers\FollowingControllsr;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
@@ -20,7 +21,7 @@ Route::post('profile/{user:username}', [FollowingControllsr::class, 'store'])->n
 Route::post('profile/{user:username}/delete', [FollowingControllsr::class, 'storeHapus'])->name('following.storeHapus');
 
 Route::post('/like', [LikeController::class, 'store'])->name('like.add');
-Route::post('/comment', [commentControllers::class, 'store'])->name('comment.add');
+Route::post('/comment', [commentControllser::class, 'store'])->name('comment.add');
 
 Route::get('/chat/{user:username}', [PostControllers::class, 'chat']);
 Route::resource('/posting', PostingController::class);

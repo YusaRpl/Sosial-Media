@@ -23,8 +23,12 @@ class posting extends Model
         return $this->hasMany(like::class)->latest();
     }
 
-    public function comment(){
-        return $this->hasMany(comment::class)->latest();
+    // public function comment(){
+    //     return $this->hasMany(comment::class)->latest();
+    // }
+    public function comment()
+    {
+        return $this->morphMany(comment::class, 'commentable')->whereNull('parent_id');
     }
 
 }

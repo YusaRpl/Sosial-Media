@@ -50,7 +50,7 @@
                     <!-- left sidebar-->
                     <div class="space-y-5 flex-shrink-0 lg:w-7/12">
 
-                        <!-- post 1-->
+                        <!-- post -->
                         @foreach (Auth::user()->postings() as $post)
                         <div class="bg-white shadow rounded-md dark:bg-gray-900 -mx-2 lg:mx-0">
                             <!-- post header-->
@@ -133,7 +133,7 @@
                                         <i class="uil-thumbs-up btn-like" id="btn-like"></i>
                                        </form>
                                     <div  class="down">{{$post->like->count()}}</div>
-                                    <a href="#" class="flex items-center space-x-2">
+                                    <a href="#comment{{$post->id}}" class="flex items-center space-x-2" uk-toggle>
                                         <div class="p-2 rounded-full text-black">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
                                                 <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
@@ -168,25 +168,32 @@
                                       @endif
                                 </div>
                                 </div>
+
                                 <div class="keterangan">
-                                    <p style="display: inline">{{substr($post->keterangan, 0,40)}}
+                                  @if (strlen($post->keterangan ) <= 40)
+                                      <p>{{$post->keterangan}}</p>
+                                  @else
+                                      <p style="display: inline">{{substr($post->keterangan, 0,40)}}
                                         <span id="{{$post->id}}" style="display:none">{{substr($post->keterangan, 41, null)}}</span></p>
                                         <a href="" onclick="toggleText(this, '{{$post->id}}'); return false;" style="color: rgb(204, 203, 203)">...Read More</a>
+                                  @endif
+                                    
                                 </div>
 
+                                <div class="comment" id="comment_add{{$post->id}}">
                                 <div class="border-t pt-4 space-y-4 dark:border-gray-600">
-
-                                    <div class="flex">
+                                    @foreach ($post->comment()->limit(2)->get() as $comment)
+                                         <div class="flex">
                                         <div class="w-10 h-10 rounded-full relative flex-shrink-0">
                                             <img src="{{ asset('assets/images/avatars/avatar-1.jpg') }}" alt="" class="absolute h-full rounded-full w-full">
                                         </div>
                                         <div class="text-gray-700 py-2 px-3 rounded-md bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20  dark:bg-gray-800 dark:text-gray-100">
-                                            <p class="leading-6"></p>
+                                            <p class="leading-6">{{$comment->comment}}</p>
                                             <div class="absolute w-3 h-3 top-3 -left-1 bg-gray-100 transform rotate-45 dark:bg-gray-800"></div>
                                         </div>
-                                    </div>
-
-                                    <a href=>
+                                      </div>
+                                    @endforeach
+                                    <a href="#comment{{$post->id}}" uk-toggle>
                                         <p class="mt-2">
                                             Lihat semua 50 komentar
                                         </p>
@@ -203,16 +210,120 @@
                                         <input type="text" name="comment" placeholder="Add your Comment.." class="bg-transparent max-h-10 shadow-none">
                                         <input type="hidden" name="post_id" value="{{$post->id}}">
                                         <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
-                                        <i class="fa-solid fa-paper-plane" id="btn-comment"></i>
-                                        {{-- <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                                        <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
                                             <i class="fa-solid fa-paper-plane" id="btn-comment"></i>
-                                        </div> --}}
+                                        </div>
                                        </form>
                                 </div>
-    
                             </div>
-    
+                            </div>
                         </div>
+
+                        {{-- detail_comentar --}}
+                        <div id="comment{{$post->id}}" class="uk-modal-container" uk-modal>
+                            <div class="uk-modal-dialog story-modal">
+                                <button class="uk-modal-close-default lg:-mt-9 lg:-mr-9 -mt-5 -mr-5 shadow-lg bg-white rounded-full p-4 transition dark:bg-gray-600 dark:text-white" type="button" uk-close></button>
+                    
+                                    <div class="story-modal-media">
+                                        <img src="{{asset('assets/images/post/img4.jpg')}}" alt=""  class="inset-0 h-full w-full object-cover">
+                                    </div>
+                                    <div class="flex-1 bg-white dark:bg-gray-900 dark:text-gray-100">
+                                    
+                                        <!-- post header-->
+                                        <div class="border-b flex items-center justify-between px-5 py-3 dark:border-gray-600">
+                                            <div class="flex flex-1 items-center space-x-4">
+                                                <a href="#">
+                                                    <div class="bg-gradient-to-tr from-yellow-600 to-pink-600 p-0.5 rounded-full">
+                                                        <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}"
+                                                            class="bg-gray-200 border border-white rounded-full w-8 h-8">
+                                                    </div>
+                                                </a>
+                                                <span class="block text-lg font-semibold">{{$post->user->name}}</span>
+                                            </div>
+                                            <a href="#"> 
+                                                <i  class="icon-feather-more-horizontal text-2xl rounded-full p-2 transition -mr-1"></i>
+                                            </a>
+                                        </div>
+                                        <div class="story-content p-4" data-simplebar>
+                    
+                                            <p>{{$post->keterangan}}</p>
+                                            
+                                            <div class="py-4 ">
+                                                <div class="flex justify-around">
+                                                    <a href="#" class="flex items-center space-x-3">
+                                                        <div class="flex font-bold items-baseline"> <i class="uil-heart mr-1"> </i></div>
+                                                        <div style="margin-left: -1px">{{$post->like->count()}} Like</div>
+                                                    </a>
+                                                    <a href="#" class="flex items-center space-x-3">
+                                                        <div class="flex font-bold items-baseline"> 
+                                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="22" height="22" class="dark:text-gray-100">
+                                                                    <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                                                                </svg></div>
+                                                                <div>{{$post->comment->count()}} Comment</div>
+                                                    </a>
+                                                    <a href="#" class="flex items-center space-x-3">
+                                                        <div class="flex font-bold items-baseline"> <i class="uil-heart mr-1"> </i></div>
+                                                        <div style="margin-left: -1px">Share</div>
+                                                    </a>
+                                                </div>
+                                                <hr class="-mx-4 my-3">
+                                                <div class="flex items-center space-x-3"> 
+                                                    @if ($post->like->count() == 0)
+              
+                                                    @else
+                                                    <div class="flex items-center">
+                                                      <img src="{{ asset('assets/images/avatars/avatar-1.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900">
+                                                      <img src="{{ asset('assets/images/avatars/avatar-4.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                                      <img src="{{ asset('assets/images/avatars/avatar-2.jpg') }}" alt="" class="w-6 h-6 rounded-full border-2 border-white dark:border-gray-900 -ml-2">
+                                                  </div>
+                                                  <div class="dark:text-gray-100">
+                                                    Liked <strong>{{$post->like[0]->username}}</strong>
+                                                    @if ($post->like->skip(1)->count() == 0)
+                                                          
+                                                    @else
+                                                      and <strong>{{$post->like->skip(1)->count()}}  Others </strong>
+                                                    @endif
+                                                  </div>
+                                                    @endif
+                                              </div>
+                                            </div>
+                    
+                                        <div class="-mt-1 space-y-1">
+                                            <div class="flex flex-1 items-center space-x-2">
+                                                <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" class="rounded-full w-8 h-8">
+                                                <div class="flex-1 p-2">
+                                                    consectetuer adipiscing elit, sed diam nonummy nibh euismod
+                                                </div>
+                                            </div>
+                    
+                                            <div class="flex flex-1 items-center space-x-2">
+                                                <img src="{{asset('assets/images/avatars/avatar-4.jpg')}}" class="rounded-full w-8 h-8">
+                                                <div class="flex-1 p-2">
+                                                    consectetuer adipiscing elit
+                                                </div>
+                                            </div>
+                    
+                                        </div>
+                    
+                    
+                                        </div>
+                                        <div class="p-3 border-t dark:border-gray-600">
+                                            <div class="bg-gray-200 dark:bg-gray-700 rounded-full rounded-md relative">
+                                                <input type="text" placeholder="Add your Comment.." class="bg-transparent max-h-8 shadow-none">
+                                                <div class="absolute bottom-0 flex h-full items-center right-0 right-3 text-xl space-x-2">
+                                                    <a href="#"> <i class="uil-image"></i></a>
+                                                    <a href="#"> <i class="uil-video"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                    
+                                    </div>
+                    
+                            </div>
+                        </div>
+                        {{-- end_detail_comentar --}}
+
+                        {{-- end post --}}
                         @endforeach
                     </div>
 
@@ -348,35 +459,34 @@
 
                 <script>
                 $(document).on("click", "#btn-comment", function(a){
-                        const user_id = a.target.previousElementSibling;
-                        const post_id = a.target.previousElementSibling.previousElementSibling;
-                        const comment = a.target.previousElementSibling.previousElementSibling.previousElementSibling;
-                        // let url = '{{ route('comment.add') }}';
-                        // let _token = $('input[name="_token"]').val();
-                        console.log(user_id);
-                        console.log(post_id);
-                        console.log(comment);
-                        // $.ajax({
-                        //     url:url,
-                        //     type:"POST",
-                        //     data:{
-                        //         user_id:user_id,
-                        //         post_id:post_id,
-                        //         comment:comment,
-                        //         _token:_token,
-                        //         },
-                        //     success:function(response){
-                        //     console.log(response)  
-                        //     // $("#"+cc).load('/ '+'#'+cc); 
-                        //     },
-                        //     sudah:function(response){
-                        //     console.log(response)
-                        //     // $("#"+cc).load('/ '+'#'+cc);
-                        //     },
-                        //     error:function(error){
-                        //     // console.log(JSON.stringify(error));
-                        //     }  
-                        // });   
+                        const user_id = a.target.parentElement.parentElement.previousElementSibling.value;
+                        const post_id = a.target.parentElement.parentElement.previousElementSibling.previousElementSibling.value;
+                        const comment = a.target.parentElement.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.value;
+                        let url = '{{ route('comment.add') }}';
+                        let _token = $('input[name="_token"]').val();
+                        let cc = a.target.parentElement.parentElement.parentElement.parentElement.parentElement.getAttribute('id');
+                        console.log([user_id, post_id, comment,cc]);
+                        $.ajax({
+                            url:url,
+                            type:"POST",
+                            data:{
+                                user_id:user_id,
+                                post_id:post_id,
+                                comment:comment,
+                                _token:_token,
+                                },
+                            success:function(response){
+                            console.log(response)  
+                            $("#"+cc).load('/ '+'#'+cc); 
+                            },
+                            sudah:function(response){
+                            console.log(response)
+                            $("#"+cc).load('/ '+'#'+cc);
+                            },
+                            error:function(error){
+                            console.log(JSON.stringify(error));
+                            }  
+                        });   
                         }); 
                 </script>
 

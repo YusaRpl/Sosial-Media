@@ -38,7 +38,7 @@ class commentControllser extends Controller
         $comment = new comment();
 
         $comment->user_id = $request->user_id;
-        $comment->posting_id = $request->post_id;
+        $comment->commentable_id = $request->post_id;
         $comment->comment = $request->comment;
         $comment->save();
         return response()->json(
@@ -47,28 +47,21 @@ class commentControllser extends Controller
                 'message' => 'Data inserted successfully'
             ]
             );
-
-
-
-        // $parameter = comment::where('user_id', $request->user_id)->where('posting_id', $request->post_id)->exists();
-        // if($parameter){
-        //     comment::where('user_id', $request->user_id)->where('posting_id', $request->post_id)->delete();
-        //     return response()->json(
-        //         [
-        //             'sudah' => true,
-        //             'message' => 'Data inserted successfully'
-        //         ]
-        //         );
-        // }else{
-        //     $like->save();
-        //     return response()->json(
-        //         [
-        //             'success' => true,
-        //             'message' => 'Data inserted successfully'
-        //         ]
-        //         );
-        // }
     }
+
+    // public function replyStore(Request $request)
+    // {
+    //     $reply = new Comment();
+    //     $reply->body = $request->get('comment_body');
+    //     $reply->user()->associate($request->user());
+    //     $reply->parent_id = $request->get('comment_id');
+    //     $post = Post::find($request->get('post_id'));
+
+    //     $post->comments()->save($reply);
+
+    //     return back();
+
+    // }
 
     /**
      * Display the specified resource.
