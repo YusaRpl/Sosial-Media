@@ -16,12 +16,14 @@ class PostControllers extends Controller
         $username = auth()->user()->username;
         return redirect()->intended('/trending/'.$username);
     }
-    public function index(){
+    public function index(Request $request){
         return view('trending', [
+            "balas" => $request,
             "title" => "trending",
-            "users" => User::where('id', '!=', auth()->user()->id)->get(),
+            "users" => User::latest()->get(),
             'posts' => posting::where('user_id', auth()->user()->id)->get(),
         ]);
+        
     }
     public function setting(){
         return view('setting', [

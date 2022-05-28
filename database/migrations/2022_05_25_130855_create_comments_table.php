@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->constrained('users')->onDelete('cascade');
-            $table->integer('commentable_id')->constrained('users')->onDelete('cascade');
-            $table->integer('parent_id')->constrained('users')->onDelete('cascade')->nullable()->default(null);
             $table->text('comment');
-            $table->string('commentable_type')->nullable()->default(null);
+            $table->integer('user_id')->constrained('users')->onDelete('cascade');
+            $table->integer('parent_id')->constrained('users')->onDelete('cascade')->nullable()->default(null);
+            $table->integer('posting_id')->constrained('users')->onDelete('cascade');
+            $table->string('posting_type');
             $table->timestamps();
         });
     }

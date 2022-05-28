@@ -38,8 +38,9 @@ class commentControllser extends Controller
         $comment = new comment();
 
         $comment->user_id = $request->user_id;
-        $comment->commentable_id = $request->post_id;
+        $comment->posting_id = $request->post_id;
         $comment->comment = $request->comment;
+        $comment->posting_type = $request->post_type;
         $comment->save();
         return response()->json(
             [
