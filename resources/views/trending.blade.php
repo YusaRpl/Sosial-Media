@@ -278,7 +278,7 @@
                                                             <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                                                             <input type="hidden" name="post_id" value="{{$post->id}}">
                                                             <input type="hidden" name="value" value="1">
-                                                            <i class="uil-thumbs-up btn-like" id="btn-like"></i>
+                                                            <i class="uil-thumbs-up btn-like" id="btn-story-like"></i>
                                                            </form>
                                                         <div  class="down">{{$post->like->count()}}</div>
                                                             <div class="p-2 rounded-full text-black">
@@ -604,9 +604,8 @@
                          let url = '{{ route('like.add') }}';
                          let _token = $('input[name="_token"]').val();
                          let cc = e.target.parentElement.parentElement.parentElement.getAttribute('id');
-                         let ccc = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('id');
                          let like = e.target.getAttribute('id');
-                         console.log([cc, ccc]);
+                         console.log([cc]);
                          $.ajax({
                              url:url,
                              type:"POST",
@@ -620,12 +619,10 @@
                             success:function(response){
                              console.log(response)  
                              $("#"+cc).load('/ '+'#'+cc); 
-                             $("#"+ccc).load('/ '+'#'+ccc); 
                             },
                             sudah:function(response){
                               console.log(response)
                               $("#"+cc).load('/ '+'#'+cc);
-                              $("#"+ccc).load('/ '+'#'+ccc);
                             },
                             error:function(error){
                                console.log(JSON.stringify(error));
@@ -633,18 +630,17 @@
                          });   
                          }); 
                  </script>
-            <script>
-                $(document).on("click", "#btn-like2", function(e){
+                 <script>
+                     $(document).on("click", "#btn-story-like", function(e){
                          const value = e.target.previousElementSibling.getAttribute('value');
                          const post_id = e.target.previousElementSibling.previousElementSibling.getAttribute('value');
                          const user_id = e.target.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
                          const username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
                          let url = '{{ route('like.add') }}';
                          let _token = $('input[name="_token"]').val();
-                         let cc = e.target.parentElement.parentElement.parentElement.getAttribute('id');
-                         let ccc = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('id');
+                         let cc = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('id');
                          let like = e.target.getAttribute('id');
-                         console.log([cc,ccc])
+                         console.log([cc]);
                          $.ajax({
                              url:url,
                              type:"POST",
@@ -656,14 +652,12 @@
                                  _token:_token,
                                  },
                             success:function(response){
-                             console.log(response) 
+                             console.log(response)  
                              $("#"+cc).load('/ '+'#'+cc); 
-                             $("#"+ccc).load('/ '+'#'+ccc); 
                             },
                             sudah:function(response){
                               console.log(response)
                               $("#"+cc).load('/ '+'#'+cc);
-                              $("#"+ccc).load('/ '+'#'+ccc);
                             },
                             error:function(error){
                                console.log(JSON.stringify(error));
@@ -671,47 +665,6 @@
                          });   
                          }); 
                  </script>
-
-                <script>
-                $(document).on("click", "#btn-like2", function(e){
-                         const value = e.target.previousElementSibling.getAttribute('value');
-                         const post_id = e.target.previousElementSibling.previousElementSibling.getAttribute('value');
-                         const user_id = e.target.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
-                         const username = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('value');
-                         let url = '{{ route('like.add') }}';
-                         let _token = $('input[name="_token"]').val();
-                         let cc = e.target.parentElement.parentElement.parentElement.getAttribute('id');
-                         let ccc = e.target.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.previousElementSibling.getAttribute('id');
-                         let like = e.target.getAttribute('id');
-                         console.log([cc,ccc])
-                         $.ajax({
-                             url:url,
-                             type:"POST",
-                             data:{
-                                 username:username,
-                                 user_id:user_id,
-                                 post_id:post_id,
-                                 value:value,
-                                 _token:_token,
-                                 },
-                            success:function(response){
-                             console.log(response) 
-                             $("#"+cc).load('/ '+'#'+cc); 
-                             $("#"+ccc).load('/ '+'#'+ccc); 
-                            },
-                            sudah:function(response){
-                              console.log(response)
-                              $("#"+cc).load('/ '+'#'+cc);
-                              $("#"+ccc).load('/ '+'#'+ccc);
-                            },
-                            error:function(error){
-                               console.log(JSON.stringify(error));
-                            }  
-                         });   
-                         }); 
-                 </script>
-
-                
             <script type="text/javascript">
                 function toggleText(btn, id){
                         console.log([btn, id]);
