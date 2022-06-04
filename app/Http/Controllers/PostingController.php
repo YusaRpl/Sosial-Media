@@ -44,10 +44,14 @@ class PostingController extends Controller
     {
     $validatedData = $request->validate([
         'keterangan' => 'max:500',
-        'image' => 'image|file'
+        'image' => 'image|file',
+        'video' => 'file|mimetypes:video/mp4',
     ]);
     if($request->file('image')){
         $validatedData['image'] = $request->file('image')->store('post-images');
+    }
+    if($request->file('video')){
+        $validatedData['video'] = $request->file('video')->store('post-video');
     }
     $validatedData['user_id'] = auth()->user()->id;
     $validatedData['quote'] = Str::limit(strip_tags($request->keterangan), 25, '...');

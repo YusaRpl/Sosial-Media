@@ -24,6 +24,15 @@ input[type=file] {
                    @enderror
                  </div>
                  <div class="mb-3">
+                   <label for="video" class="form-label @error('video') is-invalid @enderror">Post video</label>
+                   <input class="form-control" type="file" id="video" name="video" onchange="previewvideo()">
+                   @error ('video')
+                   <div class="invalid-feedback">
+                     {{$message}}
+                   </div>
+                   @enderror
+                 </div>
+                 <div class="mb-3">
                   <textarea class="p-3" name="keterangan" id="keterangan" cols="30" rows="10" placeholder="keterangan"></textarea>
                     @error ('keterangan')
                     <div class="invalid-feedback">

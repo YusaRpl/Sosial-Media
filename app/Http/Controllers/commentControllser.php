@@ -50,19 +50,23 @@ class commentControllser extends Controller
             );
     }
 
-    // public function replyStore(Request $request)
-    // {
-    //     $reply = new Comment();
-    //     $reply->body = $request->get('comment_body');
-    //     $reply->user()->associate($request->user());
-    //     $reply->parent_id = $request->get('comment_id');
-    //     $post = Post::find($request->get('post_id'));
+    public function replyStore(Request $request)
+    {
+        $comment = new comment();
 
-    //     $post->comments()->save($reply);
-
-    //     return back();
-
-    // }
+        $comment->user_id = $request->user_id;
+        $comment->posting_id = $request->post_id;
+        $comment->comment = $request->comment;
+        $comment->parent_id = $request->parent_id;
+        $comment->posting_type = $request->post_type;
+        $comment->save();
+        return response()->json(
+            [
+                'sudah' => true,
+                'message' => 'Data inserted successfully'
+            ]
+            );
+    }
 
     /**
      * Display the specified resource.

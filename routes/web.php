@@ -22,6 +22,7 @@ Route::post('profile/{user:username}/delete', [FollowingControllsr::class, 'stor
 
 Route::post('/like', [LikeController::class, 'store'])->name('like.add');
 Route::post('/comment', [commentControllser::class, 'store'])->name('comment.add');
+Route::post('/comments', [commentControllser::class, 'replyStore'])->name('replyStore.add');
 Route::post('/balas', [PostControllers::class, 'index'])->name('balas.add');
 
 Route::get('/chat/{user:username}', [PostControllers::class, 'chat']);

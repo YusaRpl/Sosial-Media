@@ -23,9 +23,13 @@ class posting extends Model
         return $this->hasMany(like::class)->latest();
     }
 
-    public function comments()
+    public function commentss()
     {
         return $this->morphMany(comment::class, 'posting')->whereNull('parent_id');
+    }
+
+    public function comments(){
+        return $this->hasMany(comment::class)->whereNull('parent_id')->latest();
     }
 
     public function comment(){

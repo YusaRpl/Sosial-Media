@@ -56,7 +56,7 @@ class LikeController extends Controller
                 return response()->json(
                     [
                         'success' => true,
-                        'message' => 'Data inserted successfully'
+                        'message' => 'success'
                     ]
                     );
             }

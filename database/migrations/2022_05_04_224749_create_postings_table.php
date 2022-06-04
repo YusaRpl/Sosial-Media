@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('postings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('image');
+            $table->string('image')->nullable()->default(null);;
+            $table->string('video')->nullable()->default(null);;
             $table->text('keterangan');
             $table->timestamps();
         });
