@@ -60,7 +60,6 @@ class LikeController extends Controller
                     ]
                     );
             }
-                
     }
 
     /**

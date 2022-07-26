@@ -10,7 +10,7 @@ class comment extends Model
     use HasFactory;
     
     protected $fillable = ['posting_id', 'user_id', 'comment'];
-
+    protected $with = ['user'];
     public function comment(){
         return $this->belongsTo(posting::class);
     }

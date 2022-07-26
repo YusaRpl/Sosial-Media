@@ -119,7 +119,7 @@
                                 </a>
                                @endif
                             </div>
-
+                            
                             <div class="py-3 px-4 space-y-3"> 
                                 <div id="post{{$post->id}}">
                                 <div class="flex space-x-4 lg:font-bold">
@@ -145,7 +145,6 @@
                                         @else
                                         <i class="uil-thumbs-up btn-like" id="btn-like" style="color: red"></i>
                                         @endif
-                                       
                                        </form>
                                     <div  class="down">{{$post->like->count()}}</div>
                                     <a href="#comment_add{{$post->id}}" class="flex items-center space-x-2" uk-toggle>
@@ -190,7 +189,7 @@
                                   @else
                                       <p style="display: inline">{{substr($post->keterangan, 0,40)}}
                                         <span id="{{$post->id}}" style="display:none">{{substr($post->keterangan, 41, null)}}</span></p>
-                                        <a href="" onclick="toggleText(this, '{{$post->id}}'); return false;" style="color: rgb(204, 203, 203)">...Read More</a>
+                                        <a href="" onclick="toggleText(this, '{{$post->id}}'); return false;" style="color: rgb(109, 94, 248)">...Read More</a>
                                   @endif
                                     
                                 </div>

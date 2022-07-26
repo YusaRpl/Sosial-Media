@@ -23,7 +23,6 @@ class PostControllers extends Controller
             "users" => User::latest()->get(),
             'posts' => posting::where('user_id', auth()->user()->id)->get(),
         ]);
-        
     }
     public function setting(){
         return view('setting', [
@@ -45,7 +44,6 @@ class PostControllers extends Controller
     public function chat(){
         return view('chat', [
             "title" => "chat",
-            "users" => User::latest()->get(),
             'posts' => posting::where('user_id', auth()->user()->id)->get()
         ]);
     }

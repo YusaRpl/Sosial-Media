@@ -22,7 +22,7 @@
                                 <li>
                                     <a href="#" class="block flex items-center py-3 px-4 space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <div class="w-12 h-12 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                             <span class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                         </div>
                                         <div class="flex-1 min-w-0 relative text-gray-500">
@@ -35,7 +35,7 @@
                                 <li>
                                     <a href="#" class="block flex items-center py-3 px-4 space-x-3 bg-gray-100 dark:bg-gray-700">
                                         <div class="w-12 h-12 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                             <span class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                         </div>
                                         <div class="flex-1 min-w-0 relative text-gray-500">
@@ -48,7 +48,7 @@
                                 <li>
                                     <a href="#" class="block flex items-center py-3 px-4 space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <div class="w-12 h-12 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-5.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src="{{asset('assets/images/avatars/avatar-5.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                             <span class="absolute bg-gray-300 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                         </div>
                                         <div class="flex-1 min-w-0 relative text-gray-500">
@@ -61,7 +61,7 @@
                                 <li>
                                     <a href="#" class="block flex items-center py-3 px-4 space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <div class="w-12 h-12 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-4.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src="{{asset('assets/images/avatars/avatar-4.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                             <span class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                         </div>
                                         <div class="flex-1 min-w-0 relative text-gray-500">
@@ -74,7 +74,7 @@
                                 <li>
                                     <a href="#" class="block flex items-center py-3 px-4 space-x-3 hover:bg-gray-100 dark:hover:bg-gray-700">
                                         <div class="w-12 h-12 rounded-full relative flex-shrink-0">
-                                            <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                            <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                             <span class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                         </div>
                                         <div class="flex-1 min-w-0 relative text-gray-500">
@@ -95,7 +95,7 @@
                         
                             <a href="#" class="flex items-center space-x-3">
                                 <div class="w-10 h-10 rounded-full relative flex-shrink-0">
-                                    <img src="assets/images/avatars/avatar-1.jpg" alt="" class="h-full rounded-full w-full">
+                                    <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="h-full rounded-full w-full">
                                     <span
                                         class="absolute bg-green-500 border-2 border-white bottom-0 h-3 m-0.5 right-0 rounded-full shadow-md w-3"></span>
                                 </div>
@@ -120,7 +120,7 @@
                                 <!-- my message-->
                                 <div class="flex lg:items-center flex-row-reverse">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-white py-2 px-3 rounded bg-blue-600 relative h-full lg:mr-5 mr-2 lg:ml-20">
                                         <p class="leading-6">consectetuer adipiscing elit, sed diam nonummy nibh euismod laoreet dolore magna <i class="uil-grin-tongue-wink"></i> </p>
@@ -132,7 +132,7 @@
                                
                                 <div class="flex lg:items-center">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-gray-700 py-2 px-3 rounded bg-gray-100 h-full relative lg:ml-5 ml-2 lg:mr-20 dark:bg-gray-700 dark:text-white">
                                         <p class="leading-6">In ut odio libero vulputate <urna class="i uil-heart"></urna> <i class="uil-grin-tongue-wink"> </i> </p>
@@ -143,7 +143,7 @@
                                 <!-- my message-->
                                 <div class="flex lg:items-center flex-row-reverse">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-white py-2 px-3 rounded bg-blue-600 relative h-full lg:mr-5 mr-2 lg:ml-20">
                                         <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option <i class="uil-grin-tongue-wink-alt"></i></p>
@@ -154,7 +154,7 @@
                                 <h3 class="lg:w-60 mx-auto text-sm uk-heading-line uk-text-center lg:pt-2"><span> 28 June, 2018 </span></h3>
                                 <div class="flex lg:items-center flex-row-reverse">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-white py-2 px-3 rounded bg-blue-600 relative h-full lg:mr-5 mr-2 lg:ml-20">
                                         <p class="leading-6">consectetuer adipiscing elit, sed diam nonummy nibh euismod laoreet dolore magna.</p>
@@ -166,7 +166,7 @@
 
                                 <div class="flex lg:items-center">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-gray-700 py-2 px-3 rounded bg-gray-100 relative h-full lg:ml-5 ml-2 lg:mr-20 dark:bg-gray-700 dark:text-white">
                                         <p class="leading-6">Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming </p>
@@ -178,7 +178,7 @@
                                 
                                 <div class="flex lg:items-center flex-row-reverse">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-2.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-2.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-white py-2 px-3 rounded bg-blue-600 relative h-full lg:mr-5 mr-2 lg:ml-20">
                                         <p class="leading-6">quis nostrud exerci tation ullamcorper suscipit .</p>
@@ -188,7 +188,7 @@
 
                                 <div class="flex lg:items-center">
                                     <div class="w-14 h-14 rounded-full relative flex-shrink-0">
-                                        <img src="assets/images/avatars/avatar-1.jpg" alt="" class="absolute h-full rounded-full w-full">
+                                        <img src="{{asset('assets/images/avatars/avatar-1.jpg')}}" alt="" class="absolute h-full rounded-full w-full">
                                     </div>
                                     <div class="text-gray-700 py-2 px-3 rounded bg-gray-100 relative h-full lg:ml-5 ml-2 lg:mr-20 dark:bg-gray-700 dark:text-white">
 

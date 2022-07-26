@@ -40,6 +40,7 @@ class PostingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
     $validatedData = $request->validate([
@@ -98,7 +99,8 @@ class PostingController extends Controller
     {
         $rules = [
             'image' => 'image|file|max:1024',
-            'keterangan' => 'max:500'
+            'keterangan' => 'max:500',
+            'video' => 'file|mimetypes:video/mp4'
         ];
 
         $validatedData = $request->validate($rules);
@@ -108,6 +110,12 @@ class PostingController extends Controller
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('post-images');
+        }
+        if($request->file('video')){
+            if($request->oldImage){
+                Storage::delete($request->oldvideo);
+            }
+            $validatedData['video'] = $request->file('video')->store('post-video');
         }
 
         $validatedData['user_id'] = auth()->user()->id;

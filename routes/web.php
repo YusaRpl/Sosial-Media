@@ -35,3 +35,6 @@ Route::post('/form-register', [RegisterControllser::class, 'store']);
 Route::get('/form-login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/form-login',[LoginController::class, 'authenticate']);
 Route::post('/logout',[loginController::class, 'logout']);
+
+
+

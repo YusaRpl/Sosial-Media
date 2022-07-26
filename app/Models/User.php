@@ -47,6 +47,20 @@ class User extends Authenticatable
     public function user(){
         return $this->hasMany(posting::class);
     }
+    public function follow (User $user)
+    {
+        return $this->follows()->save($user);
+    }
+    
+    public function unfollow (User $user)
+    {
+        return $this->follows()->detach($user);
+    }
+
+    public function hapus()
+    {
+        return $this->followers()->detach(auth()->user());
+    }
 
     public function follows(){
         return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id')->withTimestamps();
@@ -55,8 +69,13 @@ class User extends Authenticatable
     public function followers(){
         return $this->belongsToMany(User::class, 'follows', 'following_user_id', 'user_id')->withTimestamps();
     }
+    
 
-
+    public function hasFollow(User $user)
+    {
+        return $this->follows()->where('following_user_id', $user->id)->exists();
+    }
+    
     public function postings()
     {
         $following = $this->follows()->pluck('id');
@@ -65,7 +84,6 @@ class User extends Authenticatable
                             ->latest()
                             ->get();
     }
-
 
     public function postingku()
     {
@@ -84,32 +102,11 @@ class User extends Authenticatable
                             ->latest()
                             ->get();
     }
-
-    public function user_like(){
-        return $this->hasMany(like::class);
-    }
-
-    public function follow (User $user)
-    {
-        return $this->follows()->save($user);
-    }
-
-    public function unfollow (User $user)
-    {
-        return $this->follows()->detach($user);
-    }
-
-    public function hapus()
-    {
-        return $this->followers()->detach(auth()->user());
-    }
-
-    public function hasFollow(User $user)
-    {
-        return $this->follows()->where('following_user_id', $user->id)->exists();
-    }
-
+    
     public function comment(){
         return $this->hasMany(comment::class);
+    }
+    public function user_like(){
+        return $this->hasMany(like::class);
     }
 }
